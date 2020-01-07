@@ -23,6 +23,7 @@ RDEPEND=""
 DEPEND="app-emulation/qemu[qemu_user_targets_arm,static-user]"
 
 src_prepare() {
+	default
 	mkdir -p "${S}"/src
 	for cpu in $(qemu-arm -cpu help | head -n -1 | tail -n +2); do
 		sed "s/replace_this/${cpu}/" "${FILESDIR}"/qemu-wrapper.c > "${S}"/src/qemu-arm-${cpu}.c
